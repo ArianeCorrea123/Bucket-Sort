@@ -33,7 +33,7 @@ void BucketSort(int arr[])
 
     /* colocar itens nos baldes */
     /* cria uma lista de links em cada slot de bucket */
-    for (i = 0; i < NARRAY; ++i)
+    for (i = 0; i < NARRAY; i++)
     {
         struct Node *current;
         int pos = getBucketIndex(arr[i]);
@@ -52,7 +52,7 @@ void BucketSort(int arr[])
     }
 
     /* classificando o bucket usando o Insertion Sort */
-    for (i = 0; i < NBUCKET; ++i)
+    for (i = 0; i < NBUCKET; i++)
     {
         buckets[i] = InsertionSort(buckets[i]);
     }
@@ -178,7 +178,7 @@ void printBuckets(struct Node *list)
 
 int main(void)
 {
-    int array[NARRAY] = {13, 25, 20, 41, 9, 57, 12};
+    int array[NARRAY] = {12, 57, 9, 41, 20, 25, 13};
 
     printf("Array original\n");
     print(array);
