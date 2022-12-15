@@ -29,10 +29,12 @@ void BucketSort(int arr[])
     for (i = 0; i < NBUCKET; ++i)
     {
         buckets[i] = NULL;
+
     }
 
     /* colocar itens nos baldes */
     /* cria uma lista de links em cada slot de bucket */
+
     for (i = 0; i < NARRAY; i++)
     {
         struct Node *current;
@@ -54,7 +56,9 @@ void BucketSort(int arr[])
     /* classificando o bucket usando o Insertion Sort */
     for (i = 0; i < NBUCKET; i++)
     {
-        buckets[i] = InsertionSort(buckets[i]);
+
+       buckets[i] = InsertionSort(buckets[i]);
+
     }
 
     /* verifique o que há em cada balde */
@@ -176,17 +180,54 @@ void printBuckets(struct Node *list)
     }
 }
 
-int main(void)
+int menu()
 {
-    int array[NARRAY] = {12, 57, 9, 41, 20, 25, 13};
+    int resp;
+    printf("---Menu Principal---\n");
+    printf("1 - Melhor caso\n");
+    printf("2 - Pior caso\n");
+    printf("0 - Sair\n");
+    scanf("%d", &resp);
+    return resp;
+}
+int main(void){
+    int resp;
+    int array[NARRAY] = {57, 41, 25, 20, 13, 12, 9};
+    int array2[NARRAY] = {12, 57, 9, 41, 20, 25, 13};
 
-    printf("Array original\n");
-    print(array);
-    printf("------------\n");
+ do
+    {
+        resp = menu();
+            switch(resp)
+            {
+                case 1:
+                    printf("Array original\n");
+                    printf("9, 12, 13, 20, 25, 41, 57\n");
+                    printf("------------\n");
 
-    BucketSort(array);
-    printf("------------\n");
-    printf("Array ordenada\n");
-    print(array);
+                    BucketSort(array);
+                    printf("------------\n");
+                    printf("Array ordenada\n");
+                    print(array);
+
+                    break;
+                case 2:
+                    printf("Array original\n");
+                    printf("13, 25, 20, 41, 9, 57, 12\n");
+                    printf("------------\n");
+
+                    BucketSort(array2);
+                    printf("------------\n");
+                    printf("Array ordenada\n");
+                    print(array2);
+                    break;
+
+                    case 0:
+                    printf("Ate breve.\n");
+                    break;
+        }
+    }
+    while(resp!=0);
+
     return 0;
 }
